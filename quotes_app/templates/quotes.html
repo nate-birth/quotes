@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_quotes.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h1>Welcome {{request.session.uname}}!</h1>
+            <div id="nav">
+                <a href="/myaccount/{{request.session.uid}}">Edit my account</a>
+                <button><a href="/logout">Log Out</a></button>
+            </div>
+        </div>
+        <div id="quotes">
+            <h3>Quotes</h3>
+            {% for quote in all_quotes %}
+                <div id="quote">
+                    <p>{{ quote.author }}: "{{ quote.content }}"</p>
+                    <p>Posted by <a href="/user/{{ quote.posted_by.id }}">{{ quote.posted_by.full_name }}</a></p>
+                    <div class="likes">
+                        {% if quote.liked_by.count == 1 %}
+                        <p class="like">1 person likes this</p>
+                        {% else %}
+                        <p class="like">{{ quote.liked_by.count }} people like this</p>
+                        {% endif %}
+                        {% if curr_user not in quote.liked_by.all %}
+                        <button class="like_btn"><a href="like/{{ quote.id }}">Like!</a></button>
+                        {% endif %}
+                    </div>
+                    {% if curr_user == quote.posted_by %}
+                    <a href="/delete/{{ quote.id }}" class="delete_button">Delete</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        <div id="quote_form">
+            <form action="/quote/add" method="POST">
+                {% csrf_token %}
+                <h3>Add a Quote!</h3>
+                <div id="messages">
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message}}</li>
+                            {% endfor %}        
+                        </ul>
+                    {% endif %}
+                </div>
+                <table>
+                    <tr>
+                        <td><label for="author">Author</label></td>
+                        <td><input type="text" name="author"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="quote">Quote</label></td>
+                        <td><textarea name="quote" id="quote_area" cols="30" rows="10"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><input type="hidden" name="user" value="{{ request.session.uid }}"></td>
+                        <td><input type="submit" value="Submit" id="quote_sub"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_profile.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h3>Edit my account</h3>
+            <div id="nav">
+                <a href="/quotes">Back</a>
+                <button><a href="/logout">Log Out</a></button>
+            </div>
+        </div>
+        <div id="update">
+            <div id="messages">
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message}}</li>
+                        {% endfor %}        
+                    </ul>
+                {% endif %}
+            </div>
+            <form action="/update/{{ user.id }}" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label for="f_n">First Name</label></td>
+                    <td><input type="text" name="f_n" value="{{ user.first_name }}" class="field"></td>
+                </tr>
+                <tr>
+                    <td><label for="l_n">Last Name</label></td>
+                    <td><input type="text" name="l_n" value="{{ user.last_name }}" class="field"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" name="email" value="{{ user.email }}" class="field"></td>
+                </tr>
+                <tr id="bottom">
+                    <td><input type="hidden" name="id" value="{{ user.id }}"></td>
+                    <td><input type="submit" value="Update" id="update"></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

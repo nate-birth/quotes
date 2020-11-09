@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In & Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_index.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="reg">
+            <h2>Register</h2>
+            <form action="/register" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label for="f_n">First Name</label></td>
+                    <td><input type="text" name="f_n"></td>
+                </tr>
+                <tr>
+                    <td><label for="l_n">Last Name</label></td>
+                    <td><input type="text" name="l_n"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="pw">Password</label></td>
+                    <td><input type="password" name="pw"></td>
+                </tr>
+                <tr>
+                    <td><label for="c_pw">Confirm PW</label></td>
+                    <td><input type="password" name="c_pw"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="submit_button"><input type="submit" value="Register"></td>
+                </tr>
+            </table>
+            
+            </form>
+        </div>
+        <div id="login">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" name="email"></td>
+                </tr>
+                <tr>
+                    <td><label for="pw">Password</label></td>
+                    <td><input type="password" name="pw"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="submit_button"><input type="submit" value="Log In"></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div id="messages">
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{message}}</li>
+                    {% endfor %}        
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

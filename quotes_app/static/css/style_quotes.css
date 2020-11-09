@@ -1,0 +1,60 @@
+*{
+    font-family: sans-serif;
+}
+#wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+#header h1, #nav, .like, .like_btn {
+    display: inline-block;
+}
+#nav {
+    float: right;
+    padding: 20px;
+    vertical-align: middle;
+}
+#nav a{
+    padding: 0 20px;
+}
+button, #quote_sub {
+    padding: 3px 10px;
+}
+button>a {
+    text-decoration: none;
+}
+#quotes, #quote_form {
+    display: inline-block;
+    text-align: center;
+}
+#quotes {
+    width: 40%;
+}
+#quote {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 10px;
+    text-align: left;
+}
+#quote_form {
+    float: right;
+    margin-right: 50px;
+}
+td>label {
+    margin-right: 20px;
+}
+.likes, #quote p, td {
+    text-align: left;
+}
+.like_btn {
+    float: right;
+    margin: 5px 20px;
+}
+.error, .success{
+    list-style: none;
+}
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}

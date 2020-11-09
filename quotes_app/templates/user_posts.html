@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style_user.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h3>{{user.full_name}}'s quotes</h3>
+            <div id="nav">
+                <a href="/quotes">Back</a>
+                <button><a href="/logout">Log Out</a></button>
+            </div>
+        </div>
+        <div id="quotes">
+            {% for quote in user.quotes_posted.all %}
+            <p>{{ quote.author }}: "{{ quote.content }}"</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

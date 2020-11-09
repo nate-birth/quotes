@@ -1,0 +1,36 @@
+*{
+    font-family: sans-serif;
+}
+#wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+#reg, #login {
+    display: inline-block;
+    vertical-align: top;
+    margin: 30px;
+    text-align: center;
+    width: 21%;
+}
+td {
+    text-align: left;
+    font-size: 14pt;
+}
+.submit_button {
+    text-align: right;
+}
+p{
+    font-size: 16pt;
+}
+#messages {
+    margin-left: 100px;
+}
+.error, .success{
+    list-style: none;
+}
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}

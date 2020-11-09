@@ -1,0 +1,41 @@
+*{
+    font-family: sans-serif;
+}
+#wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+#header h3, #nav {
+    display: inline-block;
+}
+#nav {
+    float: right;
+    padding: 20px;
+    vertical-align: middle;
+}
+#nav a{
+    padding: 0 20px;
+}
+td{
+    font-size: 16pt;
+    width: 150px;
+}
+.field {
+    font-size: 16pt;
+}
+#bottom td {
+    padding-top: 15px;
+}
+#update {
+    font-size: 14pt;
+    padding: 3px 10px;
+}
+.error, .success{
+    list-style: none;
+}
+.error {
+    color: red;
+}
+.success {
+    color: green;
+}

@@ -1,0 +1,28 @@
+*{
+    font-family: sans-serif;
+}
+#wrapper{
+    width: 80%;
+    margin: 0 auto;
+}
+#header h3, #nav {
+    display: inline-block;
+}
+#nav {
+    float: right;
+    padding: 20px;
+    vertical-align: middle;
+}
+#nav a{
+    padding: 0 20px;
+}
+#quotes p {
+    border: 1px solid black;
+    margin: 20px 5px;
+    padding: 10px;
+    text-align: left;
+    width: 40%;
+}
+h3 {
+    margin: 20px;
+}
